@@ -1,0 +1,91 @@
+/* This file is currently associated to an HTML file of the same name and is drawing content from it.  Until the files are disassociated, you will not be able to move, delete, rename, or make any other changes to this file. */
+
+function DisplayTemplate_d852a8b226ab46d69205c1069a5ba20e(ctx) {
+  var ms_outHtml=[];
+  var cachePreviousTemplateData = ctx['DisplayTemplateData'];
+  ctx['DisplayTemplateData'] = new Object();
+  DisplayTemplate_d852a8b226ab46d69205c1069a5ba20e.DisplayTemplateData = ctx['DisplayTemplateData'];
+
+  ctx['DisplayTemplateData']['TemplateUrl']='~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_Syllabus.js';
+  ctx['DisplayTemplateData']['TemplateType']='Control';
+  ctx['DisplayTemplateData']['TargetControlType']=['Content Web Parts'];
+  this.DisplayTemplateData = ctx['DisplayTemplateData'];
+
+ms_outHtml.push('',''
+,''
+);
+            var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Grouping");
+
+            // Grouping init
+            search.Grouping.init(ctx, encodedId);
+
+            if (!$isNull(ctx.ClientControl) &&
+                !$isNull(ctx.ClientControl.shouldRenderControl) &&
+                !ctx.ClientControl.shouldRenderControl())
+            {
+                return "";
+            }
+            ctx.ListDataJSONGroupsKey = "ResultTables";
+             var MainWebPartSelectorId = ctx.ClientControl.get_id();
+                    var MainWebPartSelector = MainWebPartSelectorId.substring(0, MainWebPartSelectorId.length - 4);
+                    var SyllabusWebUrl = window["syllabusLinkUrl" + MainWebPartSelector];
+
+                    var AllSyllabusLink = window["syllabusTitleLink" + MainWebPartSelector];
+                    var SyllabusTitle = window["syllabusTitleOfWP" + MainWebPartSelector];
+        ms_outHtml.push(''
+,'        <div class="items_list">'
+);
+            if (SyllabusTitle != "")
+            {
+            ms_outHtml.push(''
+,'            <div class="title clearfix">'
+,'                <h2>', SyllabusTitle ,'</h2>'
+,'                <a href="', SyllabusWebUrl ,'" class="more">', AllSyllabusLink ,'</a>'
+,'            </div>'
+);
+            }
+            ms_outHtml.push(''
+,'            <div class="course" id="', encodedId ,'">'
+,'                ', ctx.RenderGroups(ctx) ,''
+,'            </div>'
+,''
+,''
+,''
+,''
+);
+            if (ctx.ClientControl.get_shouldShowNoResultMessage())
+            {
+            ms_outHtml.push(''
+,'            <div class="', noResultsClassName ,'">', $noResults ,'</div>'
+);
+            }
+            ms_outHtml.push(''
+,''
+,'        </div>'
+,'    '
+);
+
+  ctx['DisplayTemplateData'] = cachePreviousTemplateData;
+  return ms_outHtml.join('');
+}
+function RegisterTemplate_d852a8b226ab46d69205c1069a5ba20e() {
+
+if ("undefined" != typeof (Srch) &&"undefined" != typeof (Srch.U) &&typeof(Srch.U.registerRenderTemplateByName) == "function") {
+  Srch.U.registerRenderTemplateByName("Control_MainPlazma", DisplayTemplate_d852a8b226ab46d69205c1069a5ba20e);
+}
+
+if ("undefined" != typeof (Srch) &&"undefined" != typeof (Srch.U) &&typeof(Srch.U.registerRenderTemplateByName) == "function") {
+  Srch.U.registerRenderTemplateByName("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_Syllabus.js", DisplayTemplate_d852a8b226ab46d69205c1069a5ba20e);
+}
+//
+
+        $includeLanguageScript("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_Syllabus.js", "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+        $includeLanguageScript("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_Syllabus.js", "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/MTACustomStrings.js");
+        $includeLanguageScript("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_Syllabus.js", "~sitecollection/_catalogs/masterpage/Display Templates/Content Web Parts/search.js");
+
+    //
+}
+RegisterTemplate_d852a8b226ab46d69205c1069a5ba20e();
+if (typeof(RegisterModuleInit) == "function" && typeof(Srch.U.replaceUrlTokens) == "function") {
+  RegisterModuleInit(Srch.U.replaceUrlTokens("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_Syllabus.js"), RegisterTemplate_d852a8b226ab46d69205c1069a5ba20e);
+}

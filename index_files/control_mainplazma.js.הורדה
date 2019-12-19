@@ -1,0 +1,201 @@
+/* This file is currently associated to an HTML file of the same name and is drawing content from it.  Until the files are disassociated, you will not be able to move, delete, rename, or make any other changes to this file. */
+
+function DisplayTemplate_a3b3de059ef449a48d5ec3168c74e47f(ctx) {
+  var ms_outHtml=[];
+  var cachePreviousTemplateData = ctx['DisplayTemplateData'];
+  ctx['DisplayTemplateData'] = new Object();
+  DisplayTemplate_a3b3de059ef449a48d5ec3168c74e47f.DisplayTemplateData = ctx['DisplayTemplateData'];
+
+  ctx['DisplayTemplateData']['TemplateUrl']='~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_MainPlazma.js';
+  ctx['DisplayTemplateData']['TemplateType']='Control';
+  ctx['DisplayTemplateData']['TargetControlType']=['Content Web Parts'];
+  this.DisplayTemplateData = ctx['DisplayTemplateData'];
+
+ms_outHtml.push('',''
+,''
+);
+                   if (!$isNull(ctx.ClientControl) &&
+                       !$isNull(ctx.ClientControl.shouldRenderControl) &&
+                       !ctx.ClientControl.shouldRenderControl())
+                   {
+                       return "";
+                   }
+                   ctx.ListDataJSONGroupsKey = "ResultTables";
+                   var $noResults = Srch.ContentBySearch.getControlTemplateEncodedNoResultsMessage(ctx.ClientControl);
+
+                   var noResultsClassName = "ms-srch-result-noResults";
+                   var allMsg= "";
+
+
+                   var id = ctx.ClientControl.get_nextUniqueId();
+                   var mainSliderId = "main-slider";
+
+
+                   var ListRenderRenderWrapper = function(itemRenderResult, inCtx, tpl)
+                   {
+                       var iStr = [];
+                       //iStr.push('<article>');
+                       iStr.push(itemRenderResult);
+                       //iStr.push('</article>');
+                       return iStr.join('');
+                   }
+                   ctx['ItemRenderWrapper'] = ListRenderRenderWrapper;
+             var MainWebPartSelectorId = ctx.ClientControl.get_id();
+            var MainWebPartSelector = MainWebPartSelectorId.substring(0, MainWebPartSelectorId.length - 4);
+            var classDiv = window["classDiv" + MainWebPartSelector];
+
+                  AddPostRenderCallback(ctx, function()
+                    {  
+                   $(".rsContainer").ready(function () {
+                   var bannerTitles = {};
+                   $("#" + mainSliderId).find(".content").each(function(index, element){
+                    bannerTitles[index] = $(element).find('h2').text();
+                   });
+                   //console.log(bannerTitles);
+                   var si = $("#" + mainSliderId).royalSlider({
+                        addActiveClass: true,
+                        controlNavigation: 'bullets',
+                        autoScaleSlider: true,
+                        autoScaleSliderWidth: 900,
+                        autoScaleSliderHeight: 210,
+                        imageScaleMode:'fill',
+                        autoHeight: true,
+                        loop: true,
+                        fadeinLoadedSlide: false,
+                        globalCaption: true,
+                        keyboardNavEnabled: true,
+                        globalCaptionInside: false,
+                        imageScalePadding:0,
+                        slidesSpacing:0,
+                        arrowsNav:true,
+                        arrowsNavAutoHide: false,
+                        arrowsNavHideOnTouch: true,
+                        autoPlay: {
+                            // autoplay options go gere
+                            enabled: true,
+                            stopAtAction: false,
+                            pauseOnHover: true,
+                            delay:5000
+                        },
+                        visibleNearby: {
+                          enabled: true,
+                          centerArea: 1,
+                          center: true,
+                          breakpoint: 1023,
+                          breakpointCenterArea: 1,
+                          navigateByCenterClick: true
+                        }
+                    }).data('royalSlider');
+
+               if (is_desktop) {
+                    $("#" + mainSliderId +" .rsNavItem span").each(function (i, elm) {
+                    //var innerElm = "<span class='hidden-text'>Banner</span>";
+                       $(elm).html(i + 1);
+
+                   });
+                    $("#" + mainSliderId +" .rsArrow").attr('tabindex', 0);
+                    $("#" + mainSliderId +" .rsArrow.rsArrowRight").prepend('<span class="hidden-text">קודם</span>');
+                     $("#" + mainSliderId +" .rsArrow.rsArrowLeft").prepend('<span class="hidden-text">הבא</span>');
+
+                   $("#" + mainSliderId +" .rsNavItem").each(function (index, element) {
+                    $(element).attr('tabindex', 0);
+                    var innerElm = "<i class='hidden-text'>באנר" + (index + 1)+ " - " + bannerTitles[index] + "</i>";
+                    $(element).append(innerElm);
+                   });
+                   var mainSlider = $("#" + mainSliderId).data('royalSlider');
+
+                    $("#" + mainSliderId).on("click", ".rsSlidePause", function () {
+                        if ($(this).hasClass('paused')) {
+                            $(this).find('.hidden-text').text('עצור באנר');
+                        } else {
+                            $(this).find('.hidden-text').text('נגן באנר');
+                        }
+                        $(this).toggleClass('paused');
+                        mainSlider.toggleAutoPlay();
+                    });
+                    $("#" + mainSliderId).on("keydown", ".rsSlidePause", function (event) {
+                        if (event.keyCode == 13) {
+                            if ($(this).hasClass('paused')) {
+                                $(this).find('.hidden-text').text('עצור באנר');
+                            } else {
+                                $(this).find('.hidden-text').text('נגן באנר');
+                            }
+                            $(this).toggleClass('paused');
+                            mainSlider.toggleAutoPlay();
+                        }
+                    });
+                    $("#" + mainSliderId).on("keydown", ".rsNavItem", function (event) {
+                        if (event.keyCode == 13) {
+                            $(this).click();
+                        }
+                    });
+                    $("#" + mainSliderId).on("keydown", ".rsArrow", function (event) {
+                        if (event.keyCode == 13) {
+                            $(this).click();
+                        }
+                    });
+               $("#" + mainSliderId + " .rsNav.rsBullets").append("<div class='rsSlidePause ficon' tabindex='0'><span class='hidden-text'>עצור באנר</span></div>");
+               }
+
+
+                   });
+
+
+           });
+
+
+                   ms_outHtml.push(''
+);
+            if (ctx.ListData.ResultTables[0].RowCount == 1)
+            {
+            ms_outHtml.push(''
+,'        <div class="banner_img ', classDiv ,'">'
+,'            <figure>'
+,'                ', ctx.RenderGroups(ctx) ,''
+,'            </figure>'
+,'        </div>'
+);
+            }
+            else
+            {
+        ms_outHtml.push(''
+,'        <section id="', mainSliderId ,'" class="royalSlider rsDefault visibleNearby royalSlider_home ', classDiv ,'">'
+,'            ', ctx.RenderGroups(ctx) ,''
+,'        </section>'
+);
+            }
+        ms_outHtml.push(''
+);
+        if (ctx.ClientControl.get_shouldShowNoResultMessage())
+        {
+        ms_outHtml.push(''
+,'        <div class="', noResultsClassName ,'">', $noResults ,'</div>'
+);
+        }
+        ms_outHtml.push(''
+,''
+,'    '
+);
+
+  ctx['DisplayTemplateData'] = cachePreviousTemplateData;
+  return ms_outHtml.join('');
+}
+function RegisterTemplate_a3b3de059ef449a48d5ec3168c74e47f() {
+
+if ("undefined" != typeof (Srch) &&"undefined" != typeof (Srch.U) &&typeof(Srch.U.registerRenderTemplateByName) == "function") {
+  Srch.U.registerRenderTemplateByName("Control_MainPlazma", DisplayTemplate_a3b3de059ef449a48d5ec3168c74e47f);
+}
+
+if ("undefined" != typeof (Srch) &&"undefined" != typeof (Srch.U) &&typeof(Srch.U.registerRenderTemplateByName) == "function") {
+  Srch.U.registerRenderTemplateByName("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_MainPlazma.js", DisplayTemplate_a3b3de059ef449a48d5ec3168c74e47f);
+}
+//
+
+        $includeLanguageScript("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_MainPlazma.js", "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+        $includeLanguageScript("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_MainPlazma.js", "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/MTACustomStrings.js");
+    //
+}
+RegisterTemplate_a3b3de059ef449a48d5ec3168c74e47f();
+if (typeof(RegisterModuleInit) == "function" && typeof(Srch.U.replaceUrlTokens) == "function") {
+  RegisterModuleInit(Srch.U.replaceUrlTokens("~sitecollection\u002f_catalogs\u002fmasterpage\u002fDisplay Templates\u002fContent Web Parts\u002fControl_MainPlazma.js"), RegisterTemplate_a3b3de059ef449a48d5ec3168c74e47f);
+}
